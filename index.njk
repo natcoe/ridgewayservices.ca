@@ -20,8 +20,8 @@ description: A general website structure with a polished landing page layout.
     </p>
     <div class="hero-actions">
       
-      <a class="btn btn-primary" href="/contact/">View Our Work</a>
-      <a class="btn btn-secondary" href="/about/">Contact Us</a>
+      <a class="btn btn-primary" href="/projects/">View Our Work</a>
+      <a class="btn btn-outline" href="/contact/">Contact Us</a>
     </div>
     <div class="hero-breadcrumbs" aria-label="Project gallery">
       <button class="hero-breadcrumb active" type="button" aria-label="Show slide 1"></button>
@@ -35,116 +35,172 @@ description: A general website structure with a polished landing page layout.
 
 <section id="about" class="section section-full">
   <div class="container">
-      <p class="sub-title">Our Services</p>
+      <div class="sub-title">Our Services</div>
       <h2>What We Do</h2>
       <p>End-to-end construction services tailored to your space, schedule and budget</p>
 
       <div class="services-container">
           <div class="card-container">
               <div class="box">
+                <a href="/services/design-build" class="card-link">
                   <div class="icon">
-                      <span class="material-symbols-outlined">design_services</span>
+                    <span class="material-symbols-outlined">design_services</span>
                   </div>
+
                   <h3>Design-Build Services</h3>
-                  <p>Collaborative planning and design to streamline your project from concept to completion.</p>
-                  <a href="#" class="learn-more">Learn More →</a>
+
+                  <p>
+                    Collaborative planning and design to streamline your project from concept to completion.
+                  </p>
+
+                  <span class="learn-more">
+                    Learn More
+                    <span class="arrow">→</span>
+                  </span>
+                </a>
               </div>
 
               <div class="box">
+                <a href="/services/construction" class="card-link">
                   <div class="icon">
-                      <span class="material-symbols-outlined">home_repair_service</span>
+                    <span class="material-symbols-outlined">home_repair_service</span>
                   </div>
-                  <h3>Commercial Renovations</h3>
-                  <p>Transforming existing spaces to meet your business needs with minimal disruption.</p>
-                  <a href="#" class="learn-more">Learn More →</a>
+
+                  <h3>Construction</h3>
+
+                  <p>
+                    Transforming existing spaces to meet your business needs with minimal disruption.
+                  </p>
+
+                  <span class="learn-more">
+                    Learn More
+                    <span class="arrow">→</span>
+                  </span>
+                </a>
               </div>
 
               <div class="box">
+                <a href="/services/project-management" class="card-link">
                   <div class="icon">
-                      <span class="material-symbols-outlined">assignment</span>
+                    <span class="material-symbols-outlined">assignment</span>
                   </div>
+
                   <h3>Project Management</h3>
-                  <p>Dedicated project management to ensure quality, timelines, and budgets are met.</p>
-                  <a href="#" class="learn-more">Learn More →</a>
+
+                  <p>
+                  Dedicated project management to ensure quality, timelines, and budgets are met.
+                  </p>
+
+                  <span class="learn-more">
+                    Learn More
+                    <span class="arrow">→</span>
+                  </span>
+                </a>
               </div>
 
               <div class="box">
+                <a href="/services/maintenance" class="card-link">
                   <div class="icon">
-                      <span class="material-symbols-outlined">handyman</span>
+                    <span class="material-symbols-outlined">handyman</span>
                   </div>
+
                   <h3>Maintenance & Repairs</h3>
-                  <p>Reliable maintenance and repair services to keep your spaces running smoothly.</p>
-                  <a href="#" class="learn-more">Learn More →</a>
+
+                  <p>
+                  Reliable maintenance and repair services to keep your spaces running smoothly.
+                  </p>
+
+                  <span class="learn-more">
+                    Learn More
+                    <span class="arrow">→</span>
+                  </span>
+                </a>
               </div>
           </div>
       </div>
   </div>
 </section>
 
-<section class="section section-full">
-  <div class="container">
-    <h2>Our Core Services</h2>
-    <p>Flexible support designed to meet your goals with care, clarity, and dependable execution.</p>
-  </div>
-</section>
+{% include "recent-projects.njk" %}
 
-<section class="section section-full">
+<section class="why-choose section section-full">
   <div class="container">
-    <h2>What Sets Us Apart</h2>
-    <p>Experienced professionals, responsive communication, and a calm approach to every project.</p>
-  </div>
-</section>
+    <h2>Why Choose Ridgeway?</h2>
 
-<section id="services" class="section section-full">
-  <div class="container">
-    <div class="section-grid">
-      <article class="card">
-        <h3>Planning</h3>
-        <p>Clear direction and thoughtful preparation from the start.</p>
-      </article>
-      <article class="card">
-        <h3>Execution</h3>
-        <p>Reliable delivery with consistent quality and attention to detail.</p>
-      </article>
-      <article class="card">
-        <h3>Support</h3>
-        <p>Ongoing guidance to keep things moving smoothly after launch.</p>
-      </article>
+    <div class="features-row">
+      <div class="feature">
+        <div class="icon">
+          <span class="material-symbols-outlined">verified_user</span>
+        </div>
+        <h3>30+ Years Experience</h3>
+        <p>A proven track record of successful projects</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">
+          <span class="material-symbols-outlined">group</span>
+        </div>
+        <h3>Dedicated Team</h3>
+        <p>Skilled professionals who care about your success</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">
+          <span class="material-symbols-outlined">check_circle</span>
+        </div>
+        <h3>On Time, On Budget</h3>
+        <p>We deliver projects with precision and accountability</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">
+          <span class="material-symbols-outlined">handshake</span>
+        </div>
+        <h3>Client Focused</h3>
+        <p>Built on integrity, transparency, and long-term relationships</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">
+          <span class="material-symbols-outlined">location_on</span>
+        </div>
+        <h3>Ontario Wide</h3>
+        <p>Proudly serving businesses across Ontario</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">
+          <span class="material-symbols-outlined">workspace_premium</span>
+        </div>
+        <h3>Quality Guaranteed</h3>
+        <p>Committed to the highest standards of quality</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="process" class="section section-full">
-  <div class="container">
-    <h2>Our Process</h2>
-    <p>Every engagement follows a simple path: understand the need, design the right approach, and deliver with care.</p>
-  </div>
-</section>
+{% include "contact.njk" %}
 
-<section class="section section-full">
-  <div class="container">
-    <h2>Client Focused Results</h2>
-    <p>We build solutions around real priorities so every step feels practical, transparent, and useful.</p>
-  </div>
-</section>
+{% include "stats.njk" %}
 
-<section class="section section-full">
-  <div class="container">
-    <h2>Trusted by Growing Teams</h2>
-    <p>Our approach is designed to scale with changing needs while staying personal and responsive.</p>
-  </div>
-</section>
+{% include "testimonials.njk" %}
 
-<section id="contact" class="section section-full">
-  <div class="container split-grid">
-    <div>
-      <h2>Let's Build Something Great</h2>
-      <p>Reach out to start a conversation about your next project or service need.</p>
-    </div>
-    <div class="card">
-      <h3>Contact Details</h3>
-      <p>Email: hello@ridgewayservices.ca</p>
-      <p>Phone: (555) 123-4567</p>
+<section class="trusted-by section section-full">
+  <div class="container">
+    <h2>We Are Trusted By</h2>
+
+    <div class="logo-grid">
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
+      <div class="logo-box"></div>
     </div>
   </div>
 </section>
+
+{% include "faq.njk" %}

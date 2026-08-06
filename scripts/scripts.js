@@ -1,67 +1,116 @@
-const heroSlides = document.querySelectorAll('.hero-slide');
-const heroBreadcrumbs = document.querySelectorAll('.hero-breadcrumb');
-let heroIndex = 0;
-let heroTimer;
+/* navigation dropdowns */
 
-function showHeroSlide(index) {
-  heroIndex = index;
+document.querySelectorAll(".menu-toggle").forEach(button => {
 
-  heroSlides.forEach((slide, slideIndex) => {
-    slide.classList.toggle('is-active', slideIndex === heroIndex);
-  });
+    button.addEventListener("click", function(e){
 
-  heroBreadcrumbs.forEach((dot, dotIndex) => {
-    dot.classList.toggle('active', dotIndex === heroIndex);
-  });
-}
+        e.preventDefault();
+        e.stopPropagation();
 
-function startHeroRotation() {
-  clearInterval(heroTimer);
-  heroTimer = setInterval(() => {
-    const nextIndex = (heroIndex + 1) % heroSlides.length;
-    showHeroSlide(nextIndex);
-  }, 5000);
-}
+        const parent = this.closest(".submenu-item, .nav-item");
 
-heroBreadcrumbs.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    showHeroSlide(index);
-    startHeroRotation();
-  });
+        const expanded = this.getAttribute("aria-expanded") === "true";
+
+
+        parent.classList.toggle(
+            "is-open",
+            !expanded
+        );
+
+
+        this.setAttribute(
+            "aria-expanded",
+            String(!expanded)
+        );
+
+    });
+
 });
 
-startHeroRotation();
-showHeroSlide(heroIndex);
 
-const dropdownParents = document.querySelectorAll('.nav-item.has-dropdown');
+/* desktop dropdown hover */
+
+const dropdownParents = document.querySelectorAll('.nav-item.has-children');
 
 dropdownParents.forEach((parent) => {
+
   const menu = parent.querySelector(':scope > .dropdown-menu');
+
   let closeTimer;
+
 
   const openMenu = () => {
     clearTimeout(closeTimer);
     parent.classList.add('is-open');
   };
 
+
   const closeMenu = () => {
+
     clearTimeout(closeTimer);
+
     closeTimer = setTimeout(() => {
       parent.classList.remove('is-open');
     }, 180);
+
   };
 
-  parent.addEventListener('mouseenter', openMenu);
-  parent.addEventListener('mouseleave', closeMenu);
-  parent.addEventListener('focusin', openMenu);
-  parent.addEventListener('focusout', (event) => {
-    if (!parent.contains(event.relatedTarget)) {
-      closeMenu();
+
+  if(window.innerWidth > 760){
+
+    parent.addEventListener('mouseenter', openMenu);
+
+    parent.addEventListener('mouseleave', closeMenu);
+
+
+    parent.addEventListener('focusin', openMenu);
+
+    parent.addEventListener('focusout', (event) => {
+
+      if (!parent.contains(event.relatedTarget)) {
+        closeMenu();
+      }
+
+    });
+
+
+    if(menu){
+
+      menu.addEventListener('mouseenter', openMenu);
+
+      menu.addEventListener('mouseleave', closeMenu);
+
     }
+
+  }
+
+});
+
+
+/* mobile navigation */
+
+const mobileToggle = document.querySelector(".mobile-menu-toggle");
+const siteNav = document.querySelector(".site-nav");
+
+
+if (mobileToggle && siteNav) {
+
+  mobileToggle.addEventListener("click", () => {
+
+    const isOpen = siteNav.classList.toggle("open");
+
+    mobileToggle.classList.toggle("open", isOpen);
+
+    mobileToggle.setAttribute(
+      "aria-expanded",
+      isOpen
+    );
+
+    mobileToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation" : "Open navigation"
+    );
+
   });
 
-  if (menu) {
-    menu.addEventListener('mouseenter', openMenu);
-    menu.addEventListener('mouseleave', closeMenu);
-  }
-});
+}

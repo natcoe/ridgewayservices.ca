@@ -1,0 +1,102 @@
+[
+  {
+    "title": "CEFA",
+    "slug": "cefa",
+    "type": "Commercial",
+    "category": "Daycare",
+    "url": "/projects/commercial/daycare/cefa/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Dogtopia",
+    "slug": "dogtopia",
+    "type": "Commercial",
+    "category": "Daycare",
+    "url": "/projects/commercial/daycare/dogtopia/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Bo Li Laser Eye Clinic",
+    "slug": "bo-li-laser-eye-clinic",
+    "type": "Commercial",
+    "category": "Offices",
+    "url": "/projects/commercial/offices/bo-li-laser-eye-clinic/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Forward House",
+    "slug": "forward-house",
+    "type": "Commercial",
+    "category": "Offices",
+    "url": "/projects/commercial/offices/forward-house/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "SCM Insurance",
+    "slug": "scm-insurance",
+    "type": "Commercial",
+    "category": "Offices",
+    "url": "/projects/commercial/offices/scm-insurance/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Fat Bastard",
+    "slug": "fat-bastard",
+    "type": "Commercial",
+    "category": "Restaurants",
+    "url": "/projects/commercial/restaurants/fat-bastard/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Taco Bell",
+    "slug": "taco-bell",
+    "type": "Commercial",
+    "category": "Restaurants",
+    "url": "/projects/commercial/restaurants/taco-bell/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Bone & Biscuit",
+    "slug": "bone-and-biscuit",
+    "type": "Commercial",
+    "category": "Retail",
+    "url": "/projects/commercial/retail/bone-and-biscuit/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "2110 Keele St. Apartments",
+    "slug": "2110-keele",
+    "type": "Residential",
+    "category": "Apartments",
+    "url": "/projects/residential/2110-keele/",
+    "image": "",
+    "description": "",
+    "featured": false
+  },
+  {
+    "title": "Saranac Apartments",
+    "slug": "saranac-apartments",
+    "type": "Residential",
+    "category": "Apartments",
+    "url": "/projects/residential/saranac-apartments/",
+    "image": "",
+    "description": "",
+    "featured": false
+  }
+]

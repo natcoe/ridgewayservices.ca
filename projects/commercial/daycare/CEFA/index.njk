@@ -1,0 +1,54 @@
+---
+layout: base.njk
+title: Our Work / Commercial / Daycare / CEFA | Ridgeway Services
+description: Explore our construction and renovation services.
+projectSlug: cefa
+---
+<section class="section section-full">
+  <div class="container-interior">
+    <h1>Our Work / Commercial / Daycare / CEFA</h1>
+    <p>Details about your work go here.</p>
+  </div>
+</section>
+
+<section class="gallery-section section section-full">
+  <div class="container-interior">
+    <h2>Project Gallery</h2>
+
+    <div class="gallery-grid">
+      {% for filename in galleries[projectSlug] %}
+        <button class="gallery-item" data-index="{{ loop.index0 }}">
+          <img src="/images/projects/{{ projectSlug }}/{{ filename }}" alt="{{ projectSlug }} gallery photo {{ loop.index }}" />
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close gallery">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <img class="lightbox-image" src="" alt="" />
+    <button class="lightbox-arrow lightbox-next" aria-label="Next photo">&#8250;</button>
+    <div class="lightbox-counter"></div>
+  </div>
+</section>
+
+<section class="section project-nav-section">
+  <div class="container-interior">
+    <div class="project-nav">
+      {% if projectNav[projectSlug].prev %}
+        <a class="project-nav-link project-nav-prev" href="{{ projectNav[projectSlug].prev.url }}">
+          <span class="project-nav-label">Previous</span>
+          <strong>{{ projectNav[projectSlug].prev.title }}</strong>
+        </a>
+      {% endif %}
+      {% if projectNav[projectSlug].next %}
+        <a class="project-nav-link project-nav-next" href="{{ projectNav[projectSlug].next.url }}">
+          <span class="project-nav-label">Next</span>
+          <strong>{{ projectNav[projectSlug].next.title }}</strong>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>

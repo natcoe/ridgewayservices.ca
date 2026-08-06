@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Design-Build",
+    "slug": "design-build",
+    "url": "/services/design-build/",
+    "description": "..."
+  },
+  {
+    "title": "Construction",
+    "slug": "construction",
+    "url": "/services/construction/",
+    "description": "..."
+  },
+  {
+    "title": "Maintenance",
+    "slug": "maintenance",
+    "url": "/services/maintenance/",
+    "description": "..."
+  },
+  {
+    "title": "Project Management",
+    "slug": "project-management",
+    "url": "/services/project-management/",
+    "description": "..."
+  }
+  
+]

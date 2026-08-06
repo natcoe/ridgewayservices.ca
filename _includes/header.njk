@@ -1,93 +1,43 @@
 <header class="site-header">
+
   <div class="container header-row">
-    <a class="logo" href="#">
-        <div class="shape">
-            <img src="images/ridgeway-logo-white.svg" class="logo-img" alt="Logo" />
-        </div>
+
+    <a class="logo" href="/">
+      <div class="shape">
+        <div class="header-line-top"></div>
+        <img 
+          src="/images/ridgeway-logo-white.svg" 
+          class="logo-img" 
+          alt="Ridgeway Services & Construction logo" 
+        />
+        <div class="header-line-bottom"></div>
+      </div>
     </a>
+
+
     <div class="header-actions">
+
+      {% from "nav.njk" import renderNav %}
+
       <nav class="site-nav" aria-label="Primary navigation">
-        <div class="nav-item has-dropdown">
-          <a href="/services/" class="nav-link">
-            Services
-            <span class="caret" aria-hidden="true">▾</span>
-          </a>
-          <div class="dropdown-menu">
-            <a href="/design-build/">Design-Build</a>
-            <a href="/maintenance/">Maintenance</a>
-            <a href="/project-management/">Project Management</a>
-            <a href="/construction/">Construction</a>
-          </div>
-        </div>
-        <div class="nav-item has-dropdown">
-          <a href="/process/" class="nav-link">
-            Our Work
-            <span class="caret" aria-hidden="true">▾</span>
-          </a>
-          <div class="dropdown-menu">
-            <div class="nav-item has-dropdown tertiary-dropdown">
-              <a href="/commercial/" class="nav-link">
-                Commercial
-                <span class="caret" aria-hidden="true">▾</span>
-              </a>
-              <div class="dropdown-menu tertiary-menu">
-                <div class="nav-item has-dropdown tertiary-dropdown">
-                  <a href="/daycare/" class="nav-link">
-                    Daycare
-                    <span class="caret" aria-hidden="true">▾</span>
-                  </a>
-                  <div class="dropdown-menu tertiary-menu">
-                    <a href="/cefa/">CEFA</a>
-                    <a href="/dogtopia/">Dogtopia</a>
-                  </div>
-                </div>
-                <div class="nav-item has-dropdown tertiary-dropdown">
-                  <a href="/offices/" class="nav-link">
-                    Offices
-                    <span class="caret" aria-hidden="true">▾</span>
-                  </a>
-                  <div class="dropdown-menu tertiary-menu">
-                    <a href="/bo-li-laser-eye-clinic/">Bo Li Laser Eye Clinic</a>
-                    <a href="/forward-house/">Forward House</a>
-                    <a href="/scm-insurance/">SCM Insurance</a>
-                  </div>
-                </div>
-                <div class="nav-item has-dropdown tertiary-dropdown">
-                  <a href="/restaurants/" class="nav-link">
-                    Restaurants
-                    <span class="caret" aria-hidden="true">▾</span>
-                  </a>
-                  <div class="dropdown-menu tertiary-menu">
-                    <a href="/fat-bastard/">Fat Bastard</a>
-                    <a href="/taco-bell/">Taco Bell</a>
-                  </div>
-                </div>
-                <div class="nav-item has-dropdown tertiary-dropdown">
-                  <a href="/retail/" class="nav-link">
-                    Retail
-                    <span class="caret" aria-hidden="true">▾</span>
-                  </a>
-                  <div class="dropdown-menu tertiary-menu">
-                    <a href="/bone-biscuit/">Bone &amp; Biscuit</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="nav-item has-dropdown tertiary-dropdown">
-              <a href="/residential/" class="nav-link">
-                Residential
-                <span class="caret" aria-hidden="true">▾</span>
-              </a>
-              <div class="dropdown-menu tertiary-menu">
-                <a href=/2110-keele-st-apartments/">2110 Keele St. Apartments</a>
-                <a href="/saranac-apartments/">Saranac Apartments</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="/about/" class="nav-link">About Us</a>
-        <a href="/contact/" class="nav-link">Contact</a>
+        {{ renderNav(navigation) }}
       </nav>
+
+
+      <!-- Mobile hamburger -->
+      <button 
+        class="mobile-menu-toggle"
+        aria-expanded="false"
+        aria-label="Open navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+
     </div>
+
   </div>
+
 </header>
