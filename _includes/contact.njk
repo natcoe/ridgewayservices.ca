@@ -21,7 +21,9 @@
           <li>
             <span class="material-symbols-outlined">location_on</span>
             <span>
-              {{ site.address }}
+              <a href="{{ site.addressLink }}" target="_blank" rel="noopener noreferrer">
+                {{ site.address }}
+              </a>
             </span>
           </li>
         </ul>
@@ -30,29 +32,14 @@
       <div class="contact-form">
         <h2>Send us a Message</h2>
 
-        {# <form action="#" method="POST">
-          <div class="form-row">
-            <input type="text" name="name" placeholder="Name*" required />
-            <input type="email" name="email" placeholder="Email*" required />
-            <input type="tel" name="phone" placeholder="Phone*" required />
-          </div>
-
-          <textarea name="message" placeholder="Message*" rows="5" required></textarea>
-
-          <button type="submit" class="btn btn-secondary">Submit</button>
-
-          <span class="micetype">
-            <p class="micetype">
-              By submitting this form, you agree that Ridgeway Services & Construction Ltd. 
-              may use your information to respond to your inquiry.
-            </p>
-          </span>
-        </form> #}
-
-        <form
-          action="https://formspree.io/f/xkjwweep"
+        <form 
+          name="contact"
           method="POST"
+          data-netlify="true"
+          netlify
+          class="contact-form"
         >
+          <input type="hidden" name="form-name" value="contact">
           <div class="form-row">
             <input type="text" name="name" placeholder="Name*" required />
             <input type="email" name="email" placeholder="Email*" required />
@@ -60,15 +47,7 @@
           </div>
 
           <textarea name="message" placeholder="Message*" rows="5" required></textarea>
-          {# <label>
-            Your email:
-            <input type="email" name="email">
-          </label>
-          <label>
-            Your message:
-            <textarea name="message"></textarea>
-          </label>
-          <!-- your other form fields go here --> #}
+
           <button type="submit" class="btn btn-secondary">Submit</button>
 
           <span class="micetype">
@@ -77,6 +56,11 @@
               may use your information to respond to your inquiry.
             </p>
           </span>
+
+          <div class="form-success" hidden>
+            <h3>Thank you!</h3>
+            <p>Your message has been sent. We'll be in touch soon.</p>
+          </div>
         </form>
       </div>
     </div>

@@ -114,3 +114,46 @@ if (mobileToggle && siteNav) {
   });
 
 }
+
+/* contact form submission */
+/* contact form */
+const contactForm = document.querySelector('.contact-form');
+const formSuccess = document.querySelector('.form-success');
+
+if (contactForm && formSuccess) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector('[type="submit"]');
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+    }
+
+    try {
+      const formData = new FormData(contactForm);
+
+      await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      contactForm.hidden = true;
+      formSuccess.hidden = false;
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+      }
+
+      alert('There was a problem sending your message. Please try again.');
+    }
+  });
+}
