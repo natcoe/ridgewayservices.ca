@@ -117,11 +117,15 @@ if (mobileToggle && siteNav) {
 
 /* contact form submission */
 /* contact form */
+
 const contactForm = document.querySelector('.contact-form');
+const contactFormContent = document.querySelector('.contact-form-content');
 const formSuccess = document.querySelector('.form-success');
 
-if (contactForm && formSuccess) {
+if (contactForm && contactFormContent && formSuccess) {
+
   contactForm.addEventListener('submit', async (event) => {
+
     event.preventDefault();
 
     const submitButton = contactForm.querySelector('[type="submit"]');
@@ -132,6 +136,7 @@ if (contactForm && formSuccess) {
     }
 
     try {
+
       const formData = new FormData(contactForm);
 
       await fetch('/', {
@@ -142,18 +147,24 @@ if (contactForm && formSuccess) {
         body: new URLSearchParams(formData).toString(),
       });
 
-      contactForm.hidden = true;
+      contactFormContent.hidden = true;
       formSuccess.hidden = false;
 
     } catch (error) {
+
       console.error('Form submission error:', error);
 
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.textContent = 'Send Message';
+        submitButton.textContent = 'Submit';
       }
 
-      alert('There was a problem sending your message. Please try again.');
+      alert(
+        'There was a problem sending your message. Please try again.'
+      );
+
     }
+
   });
+
 }
