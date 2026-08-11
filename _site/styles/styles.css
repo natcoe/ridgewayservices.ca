@@ -2236,3 +2236,225 @@ ul.inluded-list li{
     font-size: 12px;
   }
 }
+
+
+/* =========================================================
+   STAGING PASSWORD GATE
+========================================================= */
+
+.staging-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  background: linear-gradient(
+    135deg,
+    var(--secondary) 0%,
+    var(--primary) 100%
+  );
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.staging-gate.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* Password card */
+
+.staging-gate-card {
+  width: min(100%, 480px);
+
+  background: var(--white);
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Logo */
+
+.staging-gate-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2.5rem 2rem;
+
+  background: var(--secondary);
+}
+
+.staging-gate-logo img {
+  display: block;
+
+  width: min(100%, 240px);
+  height: auto;
+}
+
+
+/* Content */
+
+.staging-gate-content {
+  padding: 2.5rem;
+
+  text-align: center;
+}
+
+.staging-gate-eyebrow {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  color: var(--primary);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.staging-gate-content h1 {
+  margin: 0 0 1rem;
+
+  color: var(--secondary);
+
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+
+  line-height: 1.1;
+}
+
+.staging-gate-content > p {
+  max-width: 360px;
+
+  margin: 0 auto 1.75rem;
+
+  color: var(--grey-muted);
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+}
+
+
+/* Form */
+
+.staging-login-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.85rem;
+}
+
+.staging-login-form input {
+  width: 100%;
+
+  padding: 0.9rem 1rem;
+
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  background: var(--white);
+
+  color: var(--grey);
+
+  font-family: inherit;
+  font-size: 0.95rem;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.staging-login-form input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(50, 51, 132, 0.1);
+}
+
+
+/* Button */
+
+.staging-login-form .btn {
+  width: 100%;
+
+  border: none;
+}
+
+
+/* Error message */
+
+.staging-error {
+  margin: 0.25rem 0 0;
+
+  color: #b42318;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+.staging-error[hidden] {
+  display: none;
+}
+
+
+/* Screen-reader-only label */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .staging-gate {
+    padding: 1rem;
+  }
+
+  .staging-gate-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .staging-gate-logo {
+    padding: 2rem 1.5rem;
+  }
+
+}

@@ -1,3 +1,65 @@
+/* =========================================================
+   STAGING PASSWORD GATE
+========================================================= */
+
+const stagingGate = document.getElementById('staging-gate');
+const stagingLoginForm = document.getElementById('staging-login-form');
+const stagingPassword = document.getElementById('staging-password');
+const stagingError = document.getElementById('staging-error');
+
+if (stagingGate && stagingLoginForm) {
+
+  const STAGING_PASSWORD = 'Rielly2026';
+
+  const authenticated =
+    sessionStorage.getItem('ridgeway-staging-authenticated');
+
+  if (authenticated === 'true') {
+
+    stagingGate.classList.add('is-hidden');
+    stagingGate.setAttribute('aria-hidden', 'true');
+
+  } else {
+
+    document.body.style.overflow = 'hidden';
+
+  }
+
+  stagingLoginForm.addEventListener('submit', (event) => {
+
+    event.preventDefault();
+
+    const enteredPassword = stagingPassword.value;
+
+    if (enteredPassword === STAGING_PASSWORD) {
+
+      sessionStorage.setItem(
+        'ridgeway-staging-authenticated',
+        'true'
+      );
+
+      stagingError.hidden = true;
+
+      stagingGate.classList.add('is-hidden');
+      stagingGate.setAttribute('aria-hidden', 'true');
+
+      document.body.style.overflow = '';
+
+    } else {
+
+      stagingError.hidden = false;
+
+      stagingPassword.value = '';
+
+      stagingPassword.focus();
+
+    }
+
+  });
+
+}
+
+
 /* navigation dropdowns */
 
 document.querySelectorAll(".menu-toggle").forEach(button => {

@@ -13,6 +13,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   </head>
   <body>
+
+    <!-- Staging password gate -->
+    <div id="staging-gate" class="staging-gate" aria-hidden="false">
+      <div class="staging-gate-card">
+        <div class="staging-gate-logo">
+          <img
+            src="/images/ridgeway-logo-white.svg"
+            alt="Ridgeway Services & Construction Ltd."
+          >
+        </div>
+        <div class="staging-gate-content">
+          <span class="staging-gate-eyebrow">
+            Staging Site
+          </span>
+          <h1>Private Preview</h1>
+          <p>
+            This site is currently being prepared for launch.
+            Please enter the password to continue.
+          </p>
+          <form id="staging-login-form" class="staging-login-form">
+            <label for="staging-password" class="sr-only">
+              Password
+            </label>
+            <input
+              type="password"
+              id="staging-password"
+              name="password"
+              placeholder="Password"
+              autocomplete="off"
+              required
+            >
+            <button type="submit" class="btn btn-primary">
+              Enter Site
+            </button>
+            <p
+              id="staging-error"
+              class="staging-error"
+              role="alert"
+              hidden
+            >
+              Incorrect password. Please try again.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <header class="site-header">
 
   <div class="container header-row">
@@ -453,5 +500,6 @@
     <p>&copy; 2026 | Ridgeway Services & Construction LTD. All Rights Reserved.</p>
   </div>
 </footer>
+
   </body>
 </html>
