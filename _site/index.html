@@ -7,7 +7,7 @@
     <meta name="description" content="A general website structure with a polished landing page layout." />
     <link rel="stylesheet" href="/styles/styles.css" />
     <script src="/scripts/scripts.js" defer></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apartment,assignment,build,calendar_month,call,check_circle,design_services,expand_more,group,groups,handshake,handyman,home_repair_service,how_to_reg,location_on,mail,verified_user,workspace_premium" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apartment,assignment,balance,build,calendar_month,call,check_circle,design_services,expand_more,group,groups,handshake,handyman,history,home_repair_service,how_to_reg,location_on,mail,verified_user,workspace_premium" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -422,7 +422,7 @@
 
 <section id="about" class="section section-full">
   <div class="container">
-      <div class="sub-title">Our Services</div>
+      <div class="sub-title primary">Our Services</div>
       <h2>What We Do</h2>
       <p>End-to-end construction services tailored to your space, schedule and budget</p>
 
@@ -511,7 +511,7 @@
 <section class="projects-section">
   <div class="container projects-row">
     <div class="projects-text">
-      <p class="eyebrow">Featured Projects</p>
+      <div class="sub-title white">Featured Projects</div>
       <h2>Recent Projects</h2>
       <p>Commercial and residential projects across Ontario & beyond.</p>
       <a href="/projects/" class="btn btn-outline">View All Projects</a>
@@ -520,7 +520,7 @@
     <div class="projects-slideshow">
       <div class="slideshow-viewport">
         <div class="slideshow-track">
-            <a href="/projects/cefa" class="project-card">
+            <a href="/projects/commercial/daycare/CEFA" class="project-card">
                 <img src="/images/card/projects/cefa/cefa-daycare.webp"
                     alt="Completed CEFA daycare classroom with cubbies, tables, chairs, and shelving">
 
@@ -538,7 +538,7 @@
                 </div>
             </a>
 
-            <a href="/projects/cefa" class="project-card">
+            <a href="/projects/commercial/retail/bone-and-biscuit" class="project-card">
                 <img src="/images/card/projects/bone-biscuit/bone-biscuit.webp"
                     alt="Interior of Bone & Biscuit store with modern fixtures, lighting, and shelving">
 
@@ -556,7 +556,7 @@
                 </div>
             </a>
 
-            <a href="/projects/cefa" class="project-card">
+            <a href="/projects/commercial/offices/bo-li-laser-eye-clinic" class="project-card">
                 <img src="/images/card/projects/bo-li-laser-clinic/bo-li-laser-clinic.webp"
                     alt="Interior of Bo Li Laser Clinic waiting area with frosted glass and chairs">
 
@@ -574,12 +574,12 @@
                 </div>
             </a>
 
-            <a href="/projects/cefa" class="project-card">
+            <a href="/projects/residential/saranac-apartments" class="project-card">
                 <img src="/images/card/projects/saranac-apts/saranac-apartments.webp"
                     alt="Completed interior of Saranac Apartments kitchen with modern lighting, cabinets, appliances, and floors">
 
                 <div class="project-info">
-                    <span class="category">Commercial</span>
+                    <span class="category">Residential</span>
 
                     <h3>Saranac Apartments</h3>
 
@@ -657,117 +657,112 @@
   </div>
 </section>
 
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-split">
+<section class="contact-section section-full">
+  <div class="contact-split">
+    <div class="contact-info">
+      <h2>Let's Build Something Great</h2>
+      <p>Have a project in mind?<br />We'd love to hear about it.</p>
 
-      <div class="contact-info">
-        <h2>Let's Build Something Great</h2>
-        <p>Have a project in mind?<br />We'd love to hear about it.</p>
+      <ul class="contact-details">
+        <li>
+          <span class="material-symbols-outlined">call</span>
+          <a href="tel:905-315-8887">
+            905-315-8887
+          </a>
+        </li>
 
-        <ul class="contact-details">
-          <li>
-            <span class="material-symbols-outlined">call</span>
-            <a href="tel:905-315-8887">
-              905-315-8887
+        <li>
+          <span class="material-symbols-outlined">mail</span>
+          <a href="mailto:info@ridgewayservices.ca">
+            info@ridgewayservices.ca
+          </a>
+        </li>
+
+        <li>
+          <span class="material-symbols-outlined">location_on</span>
+          <span>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=837+Hwy+6+N,+Hamilton,+ON" target="_blank" rel="noopener noreferrer">
+              837 Hwy 6 N, Hamilton, ON
             </a>
-          </li>
+          </span>
+        </li>
+      </ul>
+    </div>
 
-          <li>
-            <span class="material-symbols-outlined">mail</span>
-            <a href="mailto:info@ridgewayservices.ca">
-              info@ridgewayservices.ca
-            </a>
-          </li>
+    <div class="contact-form-container">
 
-          <li>
-            <span class="material-symbols-outlined">location_on</span>
-            <span>
-              <a href="https://www.google.com/maps/dir/?api=1&amp;destination=837+Hwy+6+N,+Hamilton,+ON" target="_blank" rel="noopener noreferrer">
-                837 Hwy 6 N, Hamilton, ON
-              </a>
-            </span>
-          </li>
-        </ul>
+      <div class="contact-form-content">
+        <h2>Send us a Message</h2>
+
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify
+          class="contact-form"
+        >
+
+          <input type="hidden" name="form-name" value="contact">
+
+          <div class="form-row">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name*"
+              required
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email*"
+              required
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone*"
+              required
+            />
+          </div>
+
+          <textarea
+            name="message"
+            placeholder="Message*"
+            rows="5"
+            required
+          ></textarea>
+
+          <button type="submit" class="btn btn-secondary">
+            Submit
+          </button>
+
+          <p class="micetype">
+            By submitting this form, you agree that Ridgeway Services & Construction Ltd.
+            may use your information to respond to your inquiry.
+          </p>
+
+        </form>
       </div>
 
 
-      <div class="contact-form-container">
+      <div class="form-success" hidden>
+        <span class="material-symbols-outlined">check_circle</span>
 
-        <div class="contact-form-content">
-          <h2>Send us a Message</h2>
+        <h2>Thank you!</h2>
 
-          <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify
-            class="contact-form"
-          >
-
-            <input type="hidden" name="form-name" value="contact">
-
-            <div class="form-row">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name*"
-                required
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Email*"
-                required
-              />
-
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone*"
-                required
-              />
-            </div>
-
-            <textarea
-              name="message"
-              placeholder="Message*"
-              rows="5"
-              required
-            ></textarea>
-
-            <button type="submit" class="btn btn-secondary">
-              Submit
-            </button>
-
-            <p class="micetype">
-              By submitting this form, you agree that Ridgeway Services & Construction Ltd.
-              may use your information to respond to your inquiry.
-            </p>
-
-          </form>
-        </div>
-
-
-        <div class="form-success" hidden>
-          <span class="material-symbols-outlined">check_circle</span>
-
-          <h2>Thank you!</h2>
-
-          <p>
-            Your message has been sent successfully.
-            We'll be in touch soon.
-          </p>
-        </div>
-
+        <p>
+          Your message has been sent successfully.
+          We'll be in touch soon.
+        </p>
       </div>
 
     </div>
   </div>
 </section>
 
-<section class="stats-section section section-full">
+<section class="stats-section section">
   <div class="container">
     <div class="stats-row">
       <div class="stat">
@@ -848,64 +843,137 @@
     <h2>We Are Trusted By</h2>
 
     <div class="logo-grid">
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
-      <div class="logo-box"></div>
+      <div class="logo-box">
+        <img src="/images/partner-logos/logo_cefa.png" alt="CEFA logo">
+      </div>
+      <div class="logo-box">
+        <img src="/images/partner-logos/logo_boneandbiscuit.png" alt="Bone & Biscuit logo">
+      </div>
+      <div class="logo-box">
+        <img src="/images/partner-logos/logo_dogtopia.png" alt="Dogtopia logo">
+      </div>
+      <div class="logo-box">
+        <img src="/images/partner-logos/logo_scm.png" alt="SCM logo">
+      </div>
+      <div class="logo-box">
+        <img src="/images/partner-logos/logo_tacobell.png" alt="Taco Bell logo">
+      </div>
+      <div class="logo-box">
+        <img src="/images/partner-logos/logo_lasereye.png" alt="Bo Li Laser Eye Clinic logo">
+      </div>
+      
     </div>
   </div>
 </section>
 
-<section class="faq-section section section-full">
+<section class="faq-section">
   <div class="container">
-    <h2>FAQs</h2>
 
-    <div class="faq-grid">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
       <div class="faq-item">
-        <button class="faq-question">
-          <span>What areas do you serve?</span>
-          <span class="material-symbols-outlined chevron">expand_more</span>
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>What areas does Ridgeway serve?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">
-          <p>Placeholder answer text goes here describing the areas you serve.</p>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Ridgeway Services & Construction primarily serves clients throughout the 
+              Greater Toronto Area, Toronto, and Southern Ontario. However, our team has 
+              successfully completed projects beyond these areas, including locations across 
+              Ontario and Eastern Canada. Whether your project is nearby or requires travel, 
+              we're committed to bringing the same level of quality, communication, and 
+              expertise to every build.
+            </p>
+          </div>
         </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>What types of projects does Ridgeway specialize in?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Ridgeway Services & Construction specializes in commercial construction, 
+              renovations, tenant improvements, and design-build projects across a variety 
+              of industries. We've worked with businesses in childcare, retail, restaurants, 
+              offices, and professional spaces to bring their ideas from concept through 
+              completion.<br/><br/>
+              
+              Our team takes a collaborative approach, working closely with clients and 
+              partners to deliver high-quality spaces that meet their needs, timelines, 
+              and goals.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>Do you handle both design and construction?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Yes, Ridgeway Services & Construction offers both design and construction 
+              services. Our team works closely with clients to create comprehensive solutions 
+              tailored to their needs and goals.
+            </p>
+          </div>
+        </div>
+
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          <span>How long does a typical project take?</span>
-          <span class="material-symbols-outlined chevron">expand_more</span>
-        </button>
-        <div class="faq-answer">
-          <p>Placeholder answer text goes here describing typical project timelines.</p>
-        </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>What other services do you provide?</span>
-          <span class="material-symbols-outlined chevron">expand_more</span>
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>Do you handle both design and construction?</span>
+          <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">
-          <p>Placeholder answer text goes here listing additional services.</p>
-        </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question">
-          <span>Are you licensed and insured?</span>
-          <span class="material-symbols-outlined chevron">expand_more</span>
-        </button>
-        <div class="faq-answer">
-          <p>Placeholder answer text goes here confirming licensing and insurance.</p>
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Yes. Ridgeway offers ongoing maintenance and support services after project 
+              completion. Our team helps clients maintain their commercial spaces through 
+              routine upkeep, repairs, and improvements, ensuring their investment continues 
+              to perform well over time.
+            </p>
+          </div>
         </div>
+
       </div>
     </div>
+
   </div>
 </section>
     </main>
@@ -914,7 +982,7 @@
   <div class="container footer-top">
     <div class="footer-brand">
       <img src="/images/ridgeway-logo-white.svg" alt="Ridgeway Services and Construction Ltd." class="footer-logo" />
-      <p class="footer-tagline">Integrity | Teamprojects | Tradition</p>
+      <p class="footer-tagline">Integrity | Teamwork | Tradition</p>
     </div>
 
     <div class="footer-col">
@@ -931,9 +999,9 @@
       <h4>Services</h4>
       <ul>
         <li><a href="/services/design-build/">Design-Build</a></li>
-        <li><a href="/services/commercial-construction/">Commercial Construction</a></li>
+        <li><a href="/services/construction/">Commercial Construction</a></li>
         <li><a href="/services/project-management/">Project Management</a></li>
-        <li><a href="/services/maintenance-repairs/">Maintenance & Repairs</a></li>
+        <li><a href="/services/maintenance/">Maintenance & Repairs</a></li>
       </ul>
     </div>
 

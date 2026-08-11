@@ -34,19 +34,28 @@ projectSlug: fat-bastard
   </div>
 </section>
 
+<section class="section section-full">
+  <div class="container container-interior">
+    <p>
+      Provide a detailed description of the Dogtopia project, including the scope of work, challenges faced, 
+      and any unique aspects of the project. Highlight the results achieved and any client testimonials if available.
+    </p>
+  </div>
+</section>
+
 <section class="section project-nav-section">
   <div class="container-interior">
     <div class="project-nav">
       {% if projectNav[projectSlug].prev %}
         <a class="project-nav-link project-nav-prev" href="{{ projectNav[projectSlug].prev.url }}">
-          <span class="project-nav-label">Previous</span>
-          <strong>{{ projectNav[projectSlug].prev.title }}</strong>
+          <span class="project-nav-label">← Previous</span>
+          {# <strong>{{ projectNav[projectSlug].prev.title }}</strong> #}
         </a>
       {% endif %}
       {% if projectNav[projectSlug].next %}
         <a class="project-nav-link project-nav-next" href="{{ projectNav[projectSlug].next.url }}">
-          <span class="project-nav-label">Next</span>
-          <strong>{{ projectNav[projectSlug].next.title }}</strong>
+          <span class="project-nav-label">Next →</span>
+          {# <strong>{{ projectNav[projectSlug].next.title }}</strong> #}
         </a>
       {% endif %}
     </div>
