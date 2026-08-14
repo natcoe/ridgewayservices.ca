@@ -1,9 +1,25 @@
-{% macro renderNav(items, level=1) %}
+{% macro isActiveTree(item, currentUrl) %}
+{%- if item.url == currentUrl -%}
+  true
+{%- elif item.children and item.children.length > 0 -%}
+  {%- set results = [] -%}
+  {%- for child in item.children -%}
+    {%- set _ = results.push(isActiveTree(child, currentUrl)) -%}
+  {%- endfor -%}
+  {{ "true" if "true" in results.join("") else "false" }}
+{%- else -%}
+  false
+{%- endif -%}
+{% endmacro %}
+
+
+{% macro renderNav(items, currentUrl, level=1) %}
 
 {% for item in items %}
 
 {% set hasChildren = item.children and item.children.length > 0 %}
-
+{% set isActive = (item.url == currentUrl) %}
+{% set isActiveTreeItem = hasChildren and isActiveTree(item, currentUrl) == "true" %}
 
 <div class="
   {% if level == 1 %}
@@ -14,6 +30,9 @@
   {% if hasChildren %}
     has-children
   {% endif %}
+  {% if isActiveTreeItem %}
+    has-active
+  {% endif %}
 ">
 
 
@@ -22,7 +41,7 @@
 
     <div class="menu-header">
 
-        <a href="{{ item.url }}" class="nav-link">
+        <a href="{{ item.url }}" class="nav-link {% if isActive %}active{% endif %}">
             {{ item.title }}
         </a>
 
@@ -45,7 +64,7 @@
       {% endif %}
     ">
 
-        {{ renderNav(item.children, level + 1) }}
+        {{ renderNav(item.children, currentUrl, level + 1) }}
 
     </div>
 
@@ -53,7 +72,7 @@
 {% else %}
 
 
-    <a href="{{ item.url }}" class="nav-link">
+    <a href="{{ item.url }}" class="nav-link {% if isActive %}active{% endif %}" {% if isActive %}aria-current="page"{% endif %}>
         {{ item.title }}
     </a>
 
@@ -71,6 +90,6 @@
 
 <nav class="site-nav" aria-label="Primary navigation">
 
-  {{ renderNav(navigation) }}
+  {{ renderNav(navigation, page.url) }}
 
 </nav>

@@ -34,12 +34,12 @@ description: A general website structure with a polished landing page layout.
 </section>
 
 <section id="about" class="section section-full">
-  <div class="container">
-      <div class="sub-title primary">Our Services</div>
-      <h2>What We Do</h2>
-      <p>End-to-end construction services tailored to your space, schedule and budget</p>
+  <div class="container" data-reveal-group>
+    <div class="sub-title primary" data-reveal>Our Services</div>
+    <h2 data-reveal>What We Do</h2>
+    <p data-reveal>End-to-end construction services tailored to your space, schedule and budget</p>
 
-      <div class="services-container">
+      <div class="services-container" data-reveal>
           <div class="card-container">
               <div class="box">
                 <a href="/services/design-build" class="card-link">
@@ -124,10 +124,10 @@ description: A general website structure with a polished landing page layout.
 {% include "recent-projects.njk" %}
 
 <section class="why-choose section section-full">
-  <div class="container">
-    <h2>Why Choose Ridgeway?</h2>
+  <div class="container" data-reveal-group>
+    <h2 data-reveal>Why Choose Ridgeway?</h2>
 
-    <div class="features-row">
+    <div class="features-row" data-reveal>
       <div class="feature">
         <div class="icon">
           <span class="material-symbols-outlined">verified_user</span>
@@ -186,10 +186,10 @@ description: A general website structure with a polished landing page layout.
 {% include "testimonials.njk" %}
 
 <section class="trusted-by section section-full">
-  <div class="container">
-    <h2>We Are Trusted By</h2>
+  <div class="container" data-reveal-group>
+    <h2 data-reveal>We Are Trusted By</h2>
 
-    <div class="logo-grid">
+    <div class="logo-grid" data-reveal>
       <div class="logo-box">
         <img src="/images/partner-logos/logo_cefa.png" alt="CEFA logo">
       </div>

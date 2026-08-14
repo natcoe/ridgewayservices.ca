@@ -13,53 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   </head>
   <body>
-
-    <!-- Staging password gate -->
-    <div id="staging-gate" class="staging-gate" aria-hidden="false">
-      <div class="staging-gate-card">
-        <div class="staging-gate-logo">
-          <img
-            src="/images/ridgeway-logo-white.svg"
-            alt="Ridgeway Services & Construction Ltd."
-          >
-        </div>
-        <div class="staging-gate-content">
-          <span class="staging-gate-eyebrow">
-            Staging Site
-          </span>
-          <h1>Private Preview</h1>
-          <p>
-            This site is currently being prepared for launch.
-            Please enter the password to continue.
-          </p>
-          <form id="staging-login-form" class="staging-login-form">
-            <label for="staging-password" class="sr-only">
-              Password
-            </label>
-            <input
-              type="password"
-              id="staging-password"
-              name="password"
-              placeholder="Password"
-              autocomplete="off"
-              required
-            >
-            <button type="submit" class="btn btn-primary">
-              Enter Site
-            </button>
-            <p
-              id="staging-error"
-              class="staging-error"
-              role="alert"
-              hidden
-            >
-              Incorrect password. Please try again.
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <header class="site-header">
 
   <div class="container header-row">
@@ -89,12 +42,16 @@
 
 
 
+
 <div class="
   
     nav-item
   
   
     has-children
+  
+  
+    has-active
   
 ">
 
@@ -104,7 +61,7 @@
 
     <div class="menu-header">
 
-        <a href="/services/" class="nav-link">
+        <a href="/services/" class="nav-link ">
             Services
         </a>
 
@@ -132,9 +89,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -143,7 +102,7 @@
 
 
 
-    <a href="/services/design-build/" class="nav-link">
+    <a href="/services/design-build/" class="nav-link " >
         Design-Build
     </a>
 
@@ -159,9 +118,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -170,7 +131,7 @@
 
 
 
-    <a href="/services/maintenance/" class="nav-link">
+    <a href="/services/maintenance/" class="nav-link " >
         Maintenance
     </a>
 
@@ -186,9 +147,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -197,7 +160,7 @@
 
 
 
-    <a href="/services/project-management/" class="nav-link">
+    <a href="/services/project-management/" class="nav-link " >
         Project Management
     </a>
 
@@ -213,9 +176,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -224,7 +189,7 @@
 
 
 
-    <a href="/services/construction/" class="nav-link">
+    <a href="/services/construction/" class="nav-link active" aria-current="page">
         Construction
     </a>
 
@@ -253,12 +218,14 @@
 
 
 
+
 <div class="
   
     nav-item
   
   
     has-children
+  
   
 ">
 
@@ -268,7 +235,7 @@
 
     <div class="menu-header">
 
-        <a href="/projects/" class="nav-link">
+        <a href="/projects/" class="nav-link ">
             Projects
         </a>
 
@@ -296,9 +263,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -307,7 +276,7 @@
 
 
 
-    <a href="/projects/commercial/" class="nav-link">
+    <a href="/projects/commercial/" class="nav-link " >
         Commercial
     </a>
 
@@ -323,9 +292,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -334,7 +305,7 @@
 
 
 
-    <a href="/projects/residential/" class="nav-link">
+    <a href="/projects/residential/" class="nav-link " >
         Residential
     </a>
 
@@ -363,9 +334,11 @@
 
 
 
+
 <div class="
   
     nav-item
+  
   
   
 ">
@@ -374,7 +347,7 @@
 
 
 
-    <a href="/about/" class="nav-link">
+    <a href="/about/" class="nav-link " >
         About Us
     </a>
 
@@ -390,9 +363,11 @@
 
 
 
+
 <div class="
   
     nav-item
+  
   
   
 ">
@@ -401,7 +376,7 @@
 
 
 
-    <a href="/contact/" class="nav-link">
+    <a href="/contact/" class="nav-link " >
         Contact
     </a>
 
@@ -436,9 +411,10 @@
 
 </header>
 
+
     <main>
-      <section class="section section-full section-hero-header interior">
-  <div class="container-interior">
+      <section class="section section-full section-hero-header interior" data-reveal-group>
+  <div class="container-interior" data-reveal>
     <h1>Construction</h1>
     <p>
       We specialize in commercial construction projects of all sizes, from retail stores, 
@@ -449,9 +425,9 @@
   </div>
 </section>
 
-<section class="section section-full">
-  <div class="container-interior">
-    <p class="eyebrow">Our Services</p>
+<section class="section section-full" data-reveal-group>
+  <div class="container-interior" data-reveal>
+    <div class="eyebrow primary">Our Services</div>
     <h2>Building with Care and Know-How</h2>
     <p class="sub-desc">Expert commercial construction services for retail, office, restaurant, and ground-up building projects.</p>
     <p>
@@ -470,18 +446,233 @@
   </div>
 </section>
 
-<section class="section section-full">
+<section class="section section-full" data-reveal-group>
   <div class="container-interior">
-    <h3>Project Types</h3>
+    <h3 data-reveal>Project Types</h3>
     <ul class="inluded-list">
-      <li>Retail store construction and fixturing</li>
-      <li>Restaurant build-outs</li>
-      <li>Office fit-ups and renovations</li>
-      <li>Daycare facility construction</li>
-      <li>Tenant improvements and leasehold work</li>
-      <li>Ground-up strip plaza construction</li>
-      <li>Pad site building construction</li>
+      <li data-reveal>Retail store construction and fixturing</li>
+      <li data-reveal>Restaurant build-outs</li>
+      <li data-reveal>Office fit-ups and renovations</li>
+      <li data-reveal>Daycare facility construction</li>
+      <li data-reveal>Tenant improvements and leasehold work</li>
+      <li data-reveal>Ground-up strip plaza construction</li>
+      <li data-reveal>Pad site building construction</li>
     </ul>
+  </div>
+</section>
+
+<section class="contact-section section-full">
+  <div class="contact-split" data-reveal-group>
+    <div class="contact-info" data-reveal>
+      <h2>Let's Build Something Great</h2>
+      <p>Have a project in mind?<br />We'd love to hear about it.</p>
+
+      <ul class="contact-details">
+        <li>
+          <span class="material-symbols-outlined">call</span>
+          <a href="tel:905-315-8887">
+            905-315-8887
+          </a>
+        </li>
+
+        <li>
+          <span class="material-symbols-outlined">mail</span>
+          <a href="mailto:info@ridgewayservices.ca">
+            info@ridgewayservices.ca
+          </a>
+        </li>
+
+        <li>
+          <span class="material-symbols-outlined">location_on</span>
+          <span>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=837+Hwy+6+N,+Hamilton,+ON" target="_blank" rel="noopener noreferrer">
+              837 Hwy 6 N, Hamilton, ON
+            </a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-form-container" data-reveal>
+
+      <div class="contact-form-content">
+        <h2>Send us a Message</h2>
+
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify
+          class="contact-form"
+        >
+
+          <input type="hidden" name="form-name" value="contact">
+
+          <div class="form-row">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name*"
+              required
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email*"
+              required
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone*"
+              required
+            />
+          </div>
+
+          <textarea
+            name="message"
+            placeholder="Message*"
+            rows="5"
+            required
+          ></textarea>
+
+          <button type="submit" class="btn btn-secondary">
+            Submit
+          </button>
+
+          <p class="micetype">
+            By submitting this form, you agree that Ridgeway Services & Construction Ltd.
+            may use your information to respond to your inquiry.
+          </p>
+
+        </form>
+      </div>
+
+
+      <div class="form-success" hidden>
+        <span class="material-symbols-outlined">check_circle</span>
+
+        <h2>Thank you!</h2>
+
+        <p>
+          Your message has been sent successfully.
+          We'll be in touch soon.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="faq-section">
+  <div class="container" data-reveal-group>
+
+    <h2 data-reveal>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item" data-reveal>
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>What areas does Ridgeway serve?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Ridgeway Services & Construction primarily serves clients throughout the 
+              Greater Toronto Area, Toronto, and Southern Ontario. However, our team has 
+              successfully completed projects beyond these areas, including locations across 
+              Ontario and Eastern Canada. Whether your project is nearby or requires travel, 
+              we're committed to bringing the same level of quality, communication, and 
+              expertise to every build.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item" data-reveal>
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>What types of projects does Ridgeway specialize in?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Ridgeway Services & Construction specializes in commercial construction, 
+              renovations, tenant improvements, and design-build projects across a variety 
+              of industries. We've worked with businesses in childcare, retail, restaurants, 
+              offices, and professional spaces to bring their ideas from concept through 
+              completion.<br/><br/>
+              
+              Our team takes a collaborative approach, working closely with clients and 
+              partners to deliver high-quality spaces that meet their needs, timelines, 
+              and goals.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="faq-item" data-reveal>
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>Do you handle both design and construction?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Yes, Ridgeway Services & Construction offers both design and construction 
+              services. Our team works closely with clients to create comprehensive solutions 
+              tailored to their needs and goals.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="faq-item" data-reveal>
+
+        <button 
+          class="faq-question"
+          aria-expanded="false"
+        >
+          <span>Do you handle both design and construction?</span>
+          <span class="faq-icon">+</span>
+        </button>
+
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            <p>
+              Yes. Ridgeway offers ongoing maintenance and support services after project 
+              completion. Our team helps clients maintain their commercial spaces through 
+              routine upkeep, repairs, and improvements, ensuring their investment continues 
+              to perform well over time.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
     </main>

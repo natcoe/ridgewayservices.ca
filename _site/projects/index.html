@@ -13,53 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   </head>
   <body>
-
-    <!-- Staging password gate -->
-    <div id="staging-gate" class="staging-gate" aria-hidden="false">
-      <div class="staging-gate-card">
-        <div class="staging-gate-logo">
-          <img
-            src="/images/ridgeway-logo-white.svg"
-            alt="Ridgeway Services & Construction Ltd."
-          >
-        </div>
-        <div class="staging-gate-content">
-          <span class="staging-gate-eyebrow">
-            Staging Site
-          </span>
-          <h1>Private Preview</h1>
-          <p>
-            This site is currently being prepared for launch.
-            Please enter the password to continue.
-          </p>
-          <form id="staging-login-form" class="staging-login-form">
-            <label for="staging-password" class="sr-only">
-              Password
-            </label>
-            <input
-              type="password"
-              id="staging-password"
-              name="password"
-              placeholder="Password"
-              autocomplete="off"
-              required
-            >
-            <button type="submit" class="btn btn-primary">
-              Enter Site
-            </button>
-            <p
-              id="staging-error"
-              class="staging-error"
-              role="alert"
-              hidden
-            >
-              Incorrect password. Please try again.
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <header class="site-header">
 
   <div class="container header-row">
@@ -89,12 +42,14 @@
 
 
 
+
 <div class="
   
     nav-item
   
   
     has-children
+  
   
 ">
 
@@ -104,7 +59,7 @@
 
     <div class="menu-header">
 
-        <a href="/services/" class="nav-link">
+        <a href="/services/" class="nav-link ">
             Services
         </a>
 
@@ -132,9 +87,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -143,7 +100,7 @@
 
 
 
-    <a href="/services/design-build/" class="nav-link">
+    <a href="/services/design-build/" class="nav-link " >
         Design-Build
     </a>
 
@@ -159,9 +116,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -170,7 +129,7 @@
 
 
 
-    <a href="/services/maintenance/" class="nav-link">
+    <a href="/services/maintenance/" class="nav-link " >
         Maintenance
     </a>
 
@@ -186,9 +145,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -197,7 +158,7 @@
 
 
 
-    <a href="/services/project-management/" class="nav-link">
+    <a href="/services/project-management/" class="nav-link " >
         Project Management
     </a>
 
@@ -213,9 +174,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -224,7 +187,7 @@
 
 
 
-    <a href="/services/construction/" class="nav-link">
+    <a href="/services/construction/" class="nav-link " >
         Construction
     </a>
 
@@ -253,12 +216,16 @@
 
 
 
+
 <div class="
   
     nav-item
   
   
     has-children
+  
+  
+    has-active
   
 ">
 
@@ -268,7 +235,7 @@
 
     <div class="menu-header">
 
-        <a href="/projects/" class="nav-link">
+        <a href="/projects/" class="nav-link active">
             Projects
         </a>
 
@@ -296,9 +263,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -307,7 +276,7 @@
 
 
 
-    <a href="/projects/commercial/" class="nav-link">
+    <a href="/projects/commercial/" class="nav-link " >
         Commercial
     </a>
 
@@ -323,9 +292,11 @@
 
 
 
+
 <div class="
   
     submenu-item
+  
   
   
 ">
@@ -334,7 +305,7 @@
 
 
 
-    <a href="/projects/residential/" class="nav-link">
+    <a href="/projects/residential/" class="nav-link " >
         Residential
     </a>
 
@@ -363,9 +334,11 @@
 
 
 
+
 <div class="
   
     nav-item
+  
   
   
 ">
@@ -374,7 +347,7 @@
 
 
 
-    <a href="/about/" class="nav-link">
+    <a href="/about/" class="nav-link " >
         About Us
     </a>
 
@@ -390,9 +363,11 @@
 
 
 
+
 <div class="
   
     nav-item
+  
   
   
 ">
@@ -401,7 +376,7 @@
 
 
 
-    <a href="/contact/" class="nav-link">
+    <a href="/contact/" class="nav-link " >
         Contact
     </a>
 
@@ -436,9 +411,10 @@
 
 </header>
 
+
     <main>
-      <section class="section section-full section-hero-header interior">
-  <div class="container-interior">
+      <section class="section section-full section-hero-header interior" data-reveal-group>
+  <div class="container-interior" data-reveal>
     <h1>Featured Projects</h1>
     <p>
       Explore a selection of our completed projects showcasing our expertise in commercial 
@@ -449,8 +425,8 @@
   </div>
 </section>
 
-<section class="projects-page section section-full">
-  <div class="container-interior">
+<section class="projects-page section section-full" data-reveal-group>
+  <div class="container-interior" data-reveal>
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="residential">Residential</button>

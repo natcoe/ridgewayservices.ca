@@ -3,8 +3,8 @@ layout: base.njk
 title: Project Management | Ridgeway Services
 description: Explore our project management services.
 ---
-<section class="section section-full section-hero-header interior">
-  <div class="container-interior">
+<section class="section section-full section-hero-header interior" data-reveal-group>
+  <div class="container-interior" data-reveal>
     <h1>Project Management</h1>
     <p>
       Our project management services keep every stage of your project organized, on 
@@ -15,9 +15,9 @@ description: Explore our project management services.
   </div>
 </section>
 
-<section class="section section-full">
-  <div class="container-interior">
-    <p class="eyebrow">Our Services</p>
+<section class="section section-full" data-reveal-group>
+  <div class="container-interior" data-reveal>
+    <div class="eyebrow primary">Our Services</div>
     <h2>Keeping Projects on Track</h2>
     <p class="sub-desc">Expert project management that keeps your construction project organized, on schedule, and on budget.</p>
     <p>
@@ -35,17 +35,20 @@ description: Explore our project management services.
   </div>
 </section>
 
-<section class="section section-full">
+<section class="section section-full" data-reveal-group>
   <div class="container-interior">
-    <h3>What's included</h3>
+    <h3 data-reveal>What's included</h3>
     <ul class="inluded-list">
-      <li>Detailed project scheduling and timeline management</li>
-      <li>Budget tracking and cost control</li>
-      <li>Trade coordination and supervision</li>
-      <li>Regular progress reporting</li>
-      <li>Quality assurance and inspections</li>
-      <li>Permit coordination</li>
-      <li>Final walkthrough and project closeout</li>
+      <li data-reveal>Detailed project scheduling and timeline management</li>
+      <li data-reveal>Budget tracking and cost control</li>
+      <li data-reveal>Trade coordination and supervision</li>
+      <li data-reveal>Regular progress reporting</li>
+      <li data-reveal>Quality assurance and inspections</li>
+      <li data-reveal>Permit coordination</li>
+      <li data-reveal>Final walkthrough and project closeout</li>
     </ul>
   </div>
 </section>
+
+{% include "contact.njk" %}
+{% include "faq.njk" %}

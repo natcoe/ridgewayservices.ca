@@ -1,65 +1,3 @@
-/* =========================================================
-   STAGING PASSWORD GATE
-========================================================= */
-
-const stagingGate = document.getElementById('staging-gate');
-const stagingLoginForm = document.getElementById('staging-login-form');
-const stagingPassword = document.getElementById('staging-password');
-const stagingError = document.getElementById('staging-error');
-
-if (stagingGate && stagingLoginForm) {
-
-  const STAGING_PASSWORD = 'Rielly2026';
-
-  const authenticated =
-    sessionStorage.getItem('ridgeway-staging-authenticated');
-
-  if (authenticated === 'true') {
-
-    stagingGate.classList.add('is-hidden');
-    stagingGate.setAttribute('aria-hidden', 'true');
-
-  } else {
-
-    document.body.style.overflow = 'hidden';
-
-  }
-
-  stagingLoginForm.addEventListener('submit', (event) => {
-
-    event.preventDefault();
-
-    const enteredPassword = stagingPassword.value;
-
-    if (enteredPassword === STAGING_PASSWORD) {
-
-      sessionStorage.setItem(
-        'ridgeway-staging-authenticated',
-        'true'
-      );
-
-      stagingError.hidden = true;
-
-      stagingGate.classList.add('is-hidden');
-      stagingGate.setAttribute('aria-hidden', 'true');
-
-      document.body.style.overflow = '';
-
-    } else {
-
-      stagingError.hidden = false;
-
-      stagingPassword.value = '';
-
-      stagingPassword.focus();
-
-    }
-
-  });
-
-}
-
-
 /* navigation dropdowns */
 
 document.querySelectorAll(".menu-toggle").forEach(button => {
@@ -146,6 +84,15 @@ dropdownParents.forEach((parent) => {
 
   }
 
+});
+
+/* active nav */
+document.querySelectorAll('.nav-link').forEach(link => {
+  if (link.getAttribute('href') === window.location.pathname) {
+    link.classList.add('active');
+    const parentItem = link.closest('.nav-item')?.parentElement?.closest('.nav-item');
+    if (parentItem) parentItem.classList.add('has-active');
+  }
 });
 
 
@@ -282,6 +229,86 @@ if (projectsSlideshow) {
   }
 }
 
+/* project gallery lightbox */
+const lightbox = document.querySelector('.lightbox');
+
+if (lightbox) {
+  const lightboxImage = lightbox.querySelector('.lightbox-image');
+  const closeButton = lightbox.querySelector('.lightbox-close');
+  const prevButton = lightbox.querySelector('.lightbox-prev');
+  const nextButton = lightbox.querySelector('.lightbox-next');
+  const counter = lightbox.querySelector('.lightbox-counter');
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+
+  if (galleryItems.length && lightboxImage && closeButton && prevButton && nextButton && counter) {
+    let currentIndex = 0;
+
+    const updateLightbox = (index) => {
+      const item = galleryItems[index];
+      if (!item) return;
+
+      const image = item.querySelector('img');
+      if (!image) return;
+
+      currentIndex = index;
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      counter.textContent = `${index + 1} / ${galleryItems.length}`;
+    };
+
+    const openLightbox = (index) => {
+      updateLightbox(index);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+
+    prevButton.addEventListener('click', () => {
+      const nextIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateLightbox(nextIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+      const nextIndex = (currentIndex + 1) % galleryItems.length;
+      updateLightbox(nextIndex);
+    });
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('active')) return;
+
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        const nextIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        updateLightbox(nextIndex);
+      }
+
+      if (event.key === 'ArrowRight') {
+        const nextIndex = (currentIndex + 1) % galleryItems.length;
+        updateLightbox(nextIndex);
+      }
+    });
+  }
+}
+
 /* project filters */
 document.querySelectorAll('.filter-bar').forEach((filterBar) => {
   const buttons = filterBar.querySelectorAll('.filter-btn');
@@ -294,10 +321,15 @@ document.querySelectorAll('.filter-bar').forEach((filterBar) => {
 
   if (!tiles.length) return;
 
+  const HEIGHT_TRANSITION_MS = 350;
+  const SETTLE_MS = 380;
+
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const filter = button.dataset.filter || 'all';
       const footer = document.querySelector('.site-footer');
+
+      const startHeight = grid.getBoundingClientRect().height;
 
       projectsPage.classList.add('is-filtering');
       footer?.classList.add('is-filtering');
@@ -322,19 +354,51 @@ document.querySelectorAll('.filter-bar').forEach((filterBar) => {
               tile.classList.add('is-visible');
             });
           });
-        } else {
-          window.setTimeout(() => {
-            if (tile.classList.contains('is-hidden')) {
-              tile.classList.add('is-removed');
-            }
-          }, 280);
         }
       });
 
+      // Measure the height the grid will settle at once non-matching tiles
+      // are actually removed from flow, so we can animate to it directly
+      // instead of letting the grid snap when display:none lands later.
+      tiles.forEach((tile) => {
+        if (tile.classList.contains('is-hidden')) {
+          tile.style.display = 'none';
+        }
+      });
+      const endHeight = grid.scrollHeight;
+      tiles.forEach((tile) => {
+        if (tile.classList.contains('is-hidden')) {
+          tile.style.display = '';
+        }
+      });
+
+      grid.style.height = `${startHeight}px`;
+      grid.style.overflow = 'hidden';
+      grid.style.transition = `height ${HEIGHT_TRANSITION_MS}ms ease`;
+
+      requestAnimationFrame(() => {
+        grid.style.height = `${endHeight}px`;
+      });
+
+      window.setTimeout(() => {
+        tiles.forEach((tile) => {
+          if (tile.classList.contains('is-hidden')) {
+            tile.classList.add('is-removed');
+            tile.style.display = 'none';
+          }
+        });
+
+        grid.style.height = '';
+        grid.style.overflow = '';
+        grid.style.transition = '';
+      }, HEIGHT_TRANSITION_MS);
+
+      // Only fade the footer back in once the grid has actually finished
+      // resizing, so it never becomes visible mid-jump.
       window.setTimeout(() => {
         projectsPage.classList.remove('is-filtering');
         footer?.classList.remove('is-filtering');
-      }, 220);
+      }, SETTLE_MS);
     });
   });
 });
@@ -462,3 +526,43 @@ document.querySelectorAll('.faq-item').forEach((item) => {
   });
 
 });
+
+
+/**
+ * Scroll reveal: fades/slides in any element marked [data-reveal]
+ * as it scrolls into view. Pairs with the [data-reveal] CSS rules
+ * in styles.css. Runs once per element (unobserves after revealing),
+ * so it won't re-trigger if the user scrolls back up and down again.
+ */
+(function () {
+  const items = document.querySelectorAll('[data-reveal]');
+  if (!items.length) return;
+
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  // No IntersectionObserver support or user prefers no motion:
+  // just show everything immediately, no animation.
+  if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+    items.forEach((el) => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15, // reveal once 15% of the element is visible
+      rootMargin: '0px 0px -40px 0px', // trigger slightly before it's fully in view
+    }
+  );
+
+  items.forEach((el) => observer.observe(el));
+})();

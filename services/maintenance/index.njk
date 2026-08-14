@@ -3,8 +3,8 @@ layout: base.njk
 title: Maintenance | Ridgeway Services
 description: Explore our maintenance services.
 ---
-<section class="section section-full section-hero-header interior">
-  <div class="container-interior">
+<section class="section section-full section-hero-header interior" data-reveal-group>
+  <div class="container-interior" data-reveal>
     <h1>Maintenance</h1>
     <p>
       Our commercial maintenance services help keep your property safe, functional, and 
@@ -15,9 +15,9 @@ description: Explore our maintenance services.
   </div>
 </section>
 
-<section class="section section-full">
-  <div class="container-interior">
-    <p class="eyebrow">Our Services</p>
+<section class="section section-full" data-reveal-group>
+  <div class="container-interior" data-reveal>
+    <div class="eyebrow primary">Our Services</div>
     <h2>We've Got Your Maintenance Covered</h2>
     <p class="sub-desc">Reliable commercial maintenance services to keep your property safe, functional, and looking its best.</p>
     <p>
@@ -36,16 +36,19 @@ description: Explore our maintenance services.
   </div>
 </section>
 
-<section class="section section-full">
+<section class="section section-full" data-reveal-group>
   <div class="container-interior">
-    <h3>What's included</h3>
+    <h3 data-reveal>What's included</h3>
     <ul class="inluded-list">
-      <li>Initial consultation and concept development</li>
-      <li>Space planning and design</li>
-      <li>Permit acquisition and code compliance</li>
-      <li>Cost estimation and budget management</li>
-      <li>Complete construction and finishing</li>
-      <li>Final inspection and handover</li>
+      <li data-reveal>Initial consultation and concept development</li>
+      <li data-reveal>Space planning and design</li>
+      <li data-reveal>Permit acquisition and code compliance</li>
+      <li data-reveal>Cost estimation and budget management</li>
+      <li data-reveal>Complete construction and finishing</li>
+      <li data-reveal>Final inspection and handover</li>
     </ul>
   </div>
 </section>
+
+{% include "contact.njk" %}
+{% include "faq.njk" %}

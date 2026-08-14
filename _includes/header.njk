@@ -20,7 +20,7 @@
       {% from "nav.njk" import renderNav %}
 
       <nav class="site-nav" aria-label="Primary navigation">
-        {{ renderNav(navigation) }}
+        {{ renderNav(navigation, page.url) }}
       </nav>
 
 
