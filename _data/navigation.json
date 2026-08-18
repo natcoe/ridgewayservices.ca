@@ -23,17 +23,7 @@
   },
   {
     "title": "Projects",
-    "url": "/projects/",
-    "children": [
-      {
-        "title": "Commercial",
-        "url": "/projects/commercial/"
-      },
-      {
-        "title": "Residential",
-        "url": "/projects/residential/"
-      }
-    ]
+    "url": "/projects/"
   },
   {
     "title": "About Us",
