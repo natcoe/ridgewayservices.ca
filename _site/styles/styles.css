@@ -997,6 +997,15 @@ h1 {
   flex-direction: column;
 }
 
+.projects-slideshow .slideshow-viewport {
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.projects-slideshow .slideshow-viewport:active {
+  cursor: grabbing;
+}
+
 .slideshow-viewport {
   overflow: hidden;
   width: 100%;
@@ -1383,22 +1392,39 @@ h1 {
 
 .testimonials-slideshow {
   position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.testimonials-slideshow .slideshow-viewport {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.testimonials-slideshow .slideshow-viewport:active {
+  cursor: grabbing;
 }
 
 .slideshow-track {
   display: flex;
+  width: 100%;
   gap: 40px;
   transition: transform 0.4s ease;
 }
 
 .testimonial {
-  flex: 1 1 calc(33.333% - 27px); /* 3 across on desktop */
+  flex: 0 0 calc(33.333% - 27px); /* 3 across on desktop */
   flex-shrink: 0;
   min-width: 0;
   box-sizing: border-box;
   text-align: left;
   background-image: url(/images/quotes.svg);
   background-repeat: no-repeat;
+  background-size: 48px auto;
+  padding: 28px 24px 24px;
 }
 
 .quote-text {
@@ -1738,6 +1764,23 @@ ul.inluded-list li {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+}
+
+.related-projects-carousel .slideshow-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.related-projects-carousel .project-grid {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  grid-template-columns: none;
+  touch-action: pan-y;
+}
+
+.related-projects-carousel .project-tile {
+  flex: 0 0 calc(33.333% - 16px);
 }
 
 .project-tile {
@@ -2350,7 +2393,7 @@ ul.inluded-list li {
   }
 
   .site-header .container {
-    padding: 1rem 0;
+    padding: 2rem 0;
   }
 
   /* ---- Mobile menu items ---- */
@@ -2366,13 +2409,18 @@ ul.inluded-list li {
   }
 
   .menu-toggle {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: .4rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-left: auto;
+  }
+
+  .menu-toggle .caret {
+    font-size: 1.2rem;
+    line-height: 1;
   }
 
   .nav-link {
@@ -2519,6 +2567,10 @@ ul.inluded-list li {
     flex: 1 1 100%;
   }
 
+  #services .box {
+    flex: 1 1 100%;
+  }
+
   .projects-section {
     padding: 56px 0;
   }
@@ -2572,16 +2624,54 @@ ul.inluded-list li {
   }
 
   .stat {
-    flex: 1 1 50%;
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 0;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 12px;
     border-left: none !important;
     margin-bottom: 24px;
-    justify-content: center;
     text-align: left;
   }
 
+  .stats-row {
+    row-gap: 8px;
+  }
+
+  .stat .material-symbols-outlined {
+    flex: 0 0 36px;
+    margin-top: 2px;
+  }
+
+  .stat-text {
+    min-width: 0;
+  }
+
+  .stat-text p {
+    white-space: normal;
+    line-height: 1.35;
+  }
+
   .testimonial {
-    flex: 1 1 100%;
+    flex: 0 0 100%;
     flex-shrink: 0;
+    padding: 24px 8px 8px;
+  }
+
+  .testimonials-section {
+    padding: 56px 0;
+  }
+
+  .testimonials-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 32px;
+  }
+
+  .slideshow-breadcrumbs {
+    margin-top: 28px;
   }
 
   .logo-grid {
@@ -2590,13 +2680,21 @@ ul.inluded-list li {
 
   .logo-box,
   .logo-box-link {
-    flex: 0 0 190px;
-    width: 190px;
-    max-width: 190px;
+    flex: 0 0 160px;
+    width: 160px;
+    max-width: 160px;
   }
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .related-projects-carousel .project-grid {
+    grid-template-columns: none;
+  }
+
+  .related-projects-carousel .project-tile {
+    flex: 0 0 100%;
   }
 
   .filter-bar {

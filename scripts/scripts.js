@@ -269,6 +269,54 @@ if (projectsSlideshow) {
         nextButton.disabled = currentIndex >= cards.length - 1;
       };
 
+      const viewport = projectsSlideshow.querySelector('.slideshow-viewport');
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+      let swipeMoved = false;
+
+      const finishSwipe = (event) => {
+        if (!viewport || event.pointerId !== undefined && !viewport.hasPointerCapture(event.pointerId)) {
+          return;
+        }
+
+        viewport.releasePointerCapture?.(event.pointerId);
+
+        const distanceX = event.clientX - pointerStartX;
+        const distanceY = event.clientY - pointerStartY;
+        const isHorizontalSwipe = Math.abs(distanceX) > 40 && Math.abs(distanceX) > Math.abs(distanceY);
+
+        if (isHorizontalSwipe) {
+          if (distanceX < 0 && currentIndex < cards.length - 1) {
+            currentIndex += 1;
+          } else if (distanceX > 0 && currentIndex > 0) {
+            currentIndex -= 1;
+          }
+
+          updatePosition(true);
+          updateControls();
+          swipeMoved = true;
+        }
+      };
+
+      viewport?.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+        pointerStartX = event.clientX;
+        pointerStartY = event.clientY;
+        swipeMoved = false;
+        viewport.setPointerCapture(event.pointerId);
+      });
+
+      viewport?.addEventListener('pointerup', finishSwipe);
+      viewport?.addEventListener('pointercancel', finishSwipe);
+      viewport?.addEventListener('click', (event) => {
+        if (swipeMoved) {
+          event.preventDefault();
+          event.stopPropagation();
+          swipeMoved = false;
+        }
+      }, true);
+
       prevButton.addEventListener('click', () => {
         if (currentIndex > 0) {
           currentIndex -= 1;
@@ -540,12 +588,145 @@ if (testimonialsSlideshow) {
       }, 5000);
     };
 
+    const viewport = testimonialsSlideshow.querySelector('.slideshow-viewport');
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+
+    const finishSwipe = (event) => {
+      if (!viewport || event.pointerId !== undefined && !viewport.hasPointerCapture(event.pointerId)) {
+        return;
+      }
+
+      viewport.releasePointerCapture?.(event.pointerId);
+
+      const distanceX = event.clientX - pointerStartX;
+      const distanceY = event.clientY - pointerStartY;
+      const isHorizontalSwipe = Math.abs(distanceX) > 40 && Math.abs(distanceX) > Math.abs(distanceY);
+
+      if (isHorizontalSwipe) {
+        if (distanceX < 0) {
+          currentIndex = (currentIndex + 1) % slides.length;
+        } else {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        }
+
+        updatePosition();
+        restartAutoplay();
+      }
+    };
+
+    viewport?.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      viewport.setPointerCapture(event.pointerId);
+    });
+
+    viewport?.addEventListener('pointerup', finishSwipe);
+    viewport?.addEventListener('pointercancel', finishSwipe);
+
     buildBreadcrumbs();
     restartAutoplay();
 
     window.addEventListener('resize', updatePosition);
   }
 }
+
+/* related service projects slideshow */
+document.querySelectorAll('.related-projects-carousel').forEach((carousel) => {
+  const viewport = carousel.querySelector('.slideshow-viewport');
+  const track = carousel.querySelector('.slideshow-track');
+  const cards = track ? Array.from(track.children) : [];
+
+  if (!viewport || !track || cards.length < 2) return;
+
+  const mobileQuery = window.matchMedia('(max-width: 600px)');
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let swipeMoved = false;
+
+  const updatePosition = (withTransition = true) => {
+    if (!mobileQuery.matches) {
+      track.style.transition = 'none';
+      track.style.transform = 'none';
+      return;
+    }
+
+    const card = cards[currentIndex];
+    if (!card) return;
+
+    track.style.transition = withTransition ? 'transform 0.4s ease' : 'none';
+    track.style.transform = `translateX(-${card.offsetLeft}px)`;
+  };
+
+  const stopAutoplay = () => {
+    window.clearInterval(autoplayTimer);
+    autoplayTimer = null;
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (!mobileQuery.matches) return;
+
+    autoplayTimer = window.setInterval(() => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updatePosition(true);
+    }, 5000);
+  };
+
+  const finishSwipe = (event) => {
+    if (!viewport.hasPointerCapture(event.pointerId)) return;
+
+    viewport.releasePointerCapture?.(event.pointerId);
+
+    const distanceX = event.clientX - pointerStartX;
+    const distanceY = event.clientY - pointerStartY;
+    const isHorizontalSwipe = mobileQuery.matches &&
+      Math.abs(distanceX) > 40 &&
+      Math.abs(distanceX) > Math.abs(distanceY);
+
+    if (isHorizontalSwipe) {
+      currentIndex = distanceX < 0
+        ? (currentIndex + 1) % cards.length
+        : (currentIndex - 1 + cards.length) % cards.length;
+      updatePosition(true);
+      startAutoplay();
+      swipeMoved = true;
+    }
+  };
+
+  viewport.addEventListener('pointerdown', (event) => {
+    if (!mobileQuery.matches || event.pointerType === 'mouse' && event.button !== 0) return;
+
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    swipeMoved = false;
+    viewport.setPointerCapture(event.pointerId);
+  });
+
+  viewport.addEventListener('pointerup', finishSwipe);
+  viewport.addEventListener('pointercancel', finishSwipe);
+  viewport.addEventListener('click', (event) => {
+    if (swipeMoved) {
+      event.preventDefault();
+      event.stopPropagation();
+      swipeMoved = false;
+    }
+  }, true);
+
+  const syncMode = () => {
+    if (!mobileQuery.matches) stopAutoplay();
+    updatePosition(false);
+    startAutoplay();
+  };
+
+  mobileQuery.addEventListener?.('change', syncMode);
+  window.addEventListener('resize', () => updatePosition(false));
+  syncMode();
+});
 
 /* faq accordion */
 /* FAQ accordion */
