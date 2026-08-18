@@ -1,7 +1,17 @@
 ---
 layout: base.njk
-title: Design-Build | Ridgeway Services
-description: Explore our design-build services.
+title: Design-Build Construction Services | GTA & Southern Ontario
+description: Turnkey design-build for retail, restaurant & office projects. One team from concept to completion — serving the GTA, Hamilton & Southern Ontario for 30+ years.
+serviceType: Design-Build
+breadcrumbs:
+  - name: Services
+    url: /services/
+  - name: Design-Build
+    url: /services/design-build/
+featuredProjectSlugs:
+  - 34f-design
+  - well-grounded-developments
+  - taco-bell
 ---
 <section class="section section-full section-hero-header interior" data-reveal-group>
   <div class="container-interior" data-reveal>
@@ -33,10 +43,8 @@ description: Explore our design-build services.
       creates a seamless flow from concept to completion.
     </p>
   </div>
-</section>
 
-<section class="section section-full" data-reveal-group>
-  <div class="container-interior">
+  <div class="container-interior whats-included" data-reveal>
     <h3 data-reveal>What's included</h3>
     <ul class="inluded-list">
       <li data-reveal>Preventive maintenance programs</li>
@@ -47,6 +55,30 @@ description: Explore our design-build services.
       <li data-reveal>Tenant turnover preparation</li>
       <li data-reveal>General building upkeep</li>
     </ul>
+  </div>
+</section>
+
+<section class="section section-full projects-page box-shadow" data-reveal-group>
+  <div class="container-interior" data-reveal>
+    <h2 class="sub">Related Design-Build Projects</h2>
+
+    <div class="project-grid">
+      {% for project in projects %}
+        {% if project.slug in featuredProjectSlugs %}
+          <a href="{{ project.url }}" class="project-tile" data-category="{{ project.category | lower | replace(' ', '-') }}">
+            <div class="project-tile-placeholder" aria-hidden="true"></div>
+            {% if project.image %}
+              <img src="{{ project.image }}" alt="{{ project.title }}" />
+            {% endif %}
+            <div class="project-tile-overlay">
+              <span class="project-category">{{ project.category }}</span>
+              <h3>{{ project.title }}</h3>
+              <span class="view-project">View Project <span class="arrow">→</span></span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 

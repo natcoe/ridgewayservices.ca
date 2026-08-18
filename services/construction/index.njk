@@ -1,7 +1,17 @@
 ---
 layout: base.njk
-title: Construction | Ridgeway Services
-description: Explore our construction and renovation services.
+title: Commercial Construction Contractor | Retail, Restaurant, Office
+description: General construction for retail, restaurant, office & tenant improvement spaces. Family-owned, 30+ years of quality builds across the GTA & Southern Ontario.
+serviceType: Construction
+breadcrumbs:
+  - name: Services
+    url: /services/
+  - name: Construction
+    url: /services/construction/
+featuredProjectSlugs:
+  - 34f-design
+  - well-grounded-developments
+  - taco-bell
 ---
 <section class="section section-full section-hero-header interior" data-reveal-group>
   <div class="container-interior" data-reveal>
@@ -34,10 +44,8 @@ description: Explore our construction and renovation services.
       store fixturing, restaurant builds, office build-outs, and tenant fit-ups.
     </p>
   </div>
-</section>
 
-<section class="section section-full" data-reveal-group>
-  <div class="container-interior">
+  <div class="container-interior whats-included" data-reveal>
     <h3 data-reveal>Project Types</h3>
     <ul class="inluded-list">
       <li data-reveal>Retail store construction and fixturing</li>
@@ -48,6 +56,30 @@ description: Explore our construction and renovation services.
       <li data-reveal>Ground-up strip plaza construction</li>
       <li data-reveal>Pad site building construction</li>
     </ul>
+  </div>
+</section>
+
+<section class="section section-full projects-page box-shadow" data-reveal-group>
+  <div class="container-interior" data-reveal>
+    <h2 class="sub">Related Construction Projects</h2>
+
+    <div class="project-grid">
+      {% for project in projects %}
+        {% if project.slug in featuredProjectSlugs %}
+          <a href="{{ project.url }}" class="project-tile" data-category="{{ project.category | lower | replace(' ', '-') }}">
+            <div class="project-tile-placeholder" aria-hidden="true"></div>
+            {% if project.image %}
+              <img src="{{ project.image }}" alt="{{ project.title }}" />
+            {% endif %}
+            <div class="project-tile-overlay">
+              <span class="project-category">{{ project.category }}</span>
+              <h3>{{ project.title }}</h3>
+              <span class="view-project">View Project <span class="arrow">→</span></span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 

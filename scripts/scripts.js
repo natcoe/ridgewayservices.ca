@@ -32,6 +32,14 @@ document.querySelectorAll(".menu-toggle").forEach(button => {
 
 const dropdownParents = document.querySelectorAll('.nav-item.has-children');
 
+const closeAllDropdowns = (exception = null) => {
+  dropdownParents.forEach((item) => {
+    if (item !== exception) {
+      item.classList.remove('is-open');
+    }
+  });
+};
+
 dropdownParents.forEach((parent) => {
 
   const menu = parent.querySelector(':scope > .dropdown-menu');
@@ -41,6 +49,7 @@ dropdownParents.forEach((parent) => {
 
   const openMenu = () => {
     clearTimeout(closeTimer);
+    closeAllDropdowns(parent);
     parent.classList.add('is-open');
   };
 
@@ -178,6 +187,60 @@ if (contactForm && contactFormContent && formSuccess) {
 
 }
 
+/* homepage hero slideshow */
+const heroSlideshow = document.querySelector('.hero-slideshow');
+
+if (heroSlideshow) {
+  const slides = Array.from(heroSlideshow.querySelectorAll('.hero-slide'));
+  const breadcrumbs = Array.from(document.querySelectorAll('.hero-breadcrumb'));
+  const hero = heroSlideshow.closest('.hero');
+
+  if (slides.length > 1 && breadcrumbs.length === slides.length) {
+    let currentIndex = 0;
+    let autoplayTimer = null;
+
+    const showSlide = (index) => {
+      currentIndex = index;
+
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle('is-active', slideIndex === currentIndex);
+      });
+
+      breadcrumbs.forEach((breadcrumb, breadcrumbIndex) => {
+        const isActive = breadcrumbIndex === currentIndex;
+        breadcrumb.classList.toggle('active', isActive);
+        breadcrumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    };
+
+    const startAutoplay = () => {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = window.setInterval(() => {
+        showSlide((currentIndex + 1) % slides.length);
+      }, 5000);
+    };
+
+    breadcrumbs.forEach((breadcrumb, index) => {
+      breadcrumb.addEventListener('click', () => {
+        showSlide(index);
+        startAutoplay();
+      });
+    });
+
+    hero?.addEventListener('mouseenter', () => window.clearInterval(autoplayTimer));
+    hero?.addEventListener('mouseleave', startAutoplay);
+    hero?.addEventListener('focusin', () => window.clearInterval(autoplayTimer));
+    hero?.addEventListener('focusout', (event) => {
+      if (!hero.contains(event.relatedTarget)) {
+        startAutoplay();
+      }
+    });
+
+    showSlide(0);
+    startAutoplay();
+  }
+}
+
 /* recent projects slideshow */
 const projectsSlideshow = document.querySelector('.projects-slideshow');
 
@@ -310,6 +373,12 @@ if (lightbox) {
 }
 
 /* project filters */
+document.querySelectorAll('.project-tile img').forEach((image) => {
+  image.addEventListener('error', () => {
+    image.remove();
+  });
+});
+
 document.querySelectorAll('.filter-bar').forEach((filterBar) => {
   const buttons = filterBar.querySelectorAll('.filter-btn');
   const projectsPage = filterBar.closest('.projects-page');
@@ -338,6 +407,9 @@ document.querySelectorAll('.filter-bar').forEach((filterBar) => {
         btn.classList.toggle('active', btn === button);
       });
 
+      const visibleTiles = [];
+      const hiddenTiles = [];
+
       tiles.forEach((tile) => {
         const matches = filter === 'all' || tile.dataset.category === filter;
 
@@ -347,6 +419,7 @@ document.querySelectorAll('.filter-bar').forEach((filterBar) => {
 
         if (matches) {
           tile.style.display = '';
+          visibleTiles.push(tile);
           tile.classList.add('is-appearing');
 
           requestAnimationFrame(() => {
@@ -354,7 +427,16 @@ document.querySelectorAll('.filter-bar').forEach((filterBar) => {
               tile.classList.add('is-visible');
             });
           });
+        } else {
+          hiddenTiles.push(tile);
         }
+      });
+
+      // Move matching cards to the front of the grid before the layout settles,
+      // so filtered results start in the earliest available slots instead of
+      // appearing in the last positions and then jumping upward.
+      visibleTiles.concat(hiddenTiles).forEach((tile) => {
+        grid.appendChild(tile);
       });
 
       // Measure the height the grid will settle at once non-matching tiles
@@ -559,8 +641,8 @@ document.querySelectorAll('.faq-item').forEach((item) => {
       });
     },
     {
-      threshold: 0.15, // reveal once 15% of the element is visible
-      rootMargin: '0px 0px -40px 0px', // trigger slightly before it's fully in view
+      threshold: 0,
+      rootMargin: '0px 0px 0px 0px',
     }
   );
 

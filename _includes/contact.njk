@@ -1,4 +1,4 @@
-<section class="contact-section section-full">
+<section class="contact-section section-full-alt">
   <div class="contact-split" data-reveal-group>
     <div class="contact-info" data-reveal>
       <h2>Let's Build Something Great</h2>
@@ -23,7 +23,7 @@
           <span class="material-symbols-outlined">location_on</span>
           <span>
             <a href="{{ site.addressLink }}" target="_blank" rel="noopener noreferrer">
-              {{ site.address }}
+              {{ site.address.street }}, {{ site.address.city }}, {{ site.address.region }} {{ site.address.postalCode }}
             </a>
           </span>
         </li>
