@@ -254,6 +254,11 @@ if (projectsSlideshow) {
 
     if (cards.length > 1) {
       let currentIndex = 0;
+      const desktopQuery = window.matchMedia('(min-width: 901px)');
+
+      const getMaxIndex = () => desktopQuery.matches
+        ? Math.max(0, cards.length - 2)
+        : cards.length - 1;
 
       const updatePosition = (withTransition = true) => {
         const card = cards[currentIndex];
@@ -266,7 +271,7 @@ if (projectsSlideshow) {
 
       const updateControls = () => {
         prevButton.disabled = currentIndex === 0;
-        nextButton.disabled = currentIndex >= cards.length - 1;
+        nextButton.disabled = currentIndex >= getMaxIndex();
       };
 
       const viewport = projectsSlideshow.querySelector('.slideshow-viewport');
@@ -286,7 +291,7 @@ if (projectsSlideshow) {
         const isHorizontalSwipe = Math.abs(distanceX) > 40 && Math.abs(distanceX) > Math.abs(distanceY);
 
         if (isHorizontalSwipe) {
-          if (distanceX < 0 && currentIndex < cards.length - 1) {
+          if (distanceX < 0 && currentIndex < getMaxIndex()) {
             currentIndex += 1;
           } else if (distanceX > 0 && currentIndex > 0) {
             currentIndex -= 1;
@@ -300,6 +305,7 @@ if (projectsSlideshow) {
 
       viewport?.addEventListener('pointerdown', (event) => {
         if (event.pointerType === 'mouse' && event.button !== 0) return;
+        if (event.target.closest('button')) return;
 
         pointerStartX = event.clientX;
         pointerStartY = event.clientY;
@@ -326,14 +332,18 @@ if (projectsSlideshow) {
       });
 
       nextButton.addEventListener('click', () => {
-        if (currentIndex < cards.length - 1) {
+        if (currentIndex < getMaxIndex()) {
           currentIndex += 1;
           updatePosition(true);
           updateControls();
         }
       });
 
-      window.addEventListener('resize', () => updatePosition(false));
+      window.addEventListener('resize', () => {
+        currentIndex = Math.min(currentIndex, getMaxIndex());
+        updatePosition(false);
+        updateControls();
+      });
       updateControls();
       updatePosition(false);
     }
