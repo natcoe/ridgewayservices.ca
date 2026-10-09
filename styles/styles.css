@@ -2094,6 +2094,35 @@ ul.inluded-list li {
   margin-top: 48px;
 }
 
+.site-footer > .footer-social {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.footer-social ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-social li {
+  margin: 0;
+}
+
+.footer-social a {
+  display: inline-flex;
+  color: var(--white);
+}
+
+.footer-social svg {
+  width: 26px;
+  height: 26px;
+}
+
 .footer-bottom {
   padding: 24px 0;
   text-align: center;
