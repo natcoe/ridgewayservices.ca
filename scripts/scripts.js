@@ -278,13 +278,12 @@ if (projectsSlideshow) {
       let pointerStartX = 0;
       let pointerStartY = 0;
       let swipeMoved = false;
+      let tracking = false;
 
       const finishSwipe = (event) => {
-        if (!viewport || event.pointerId !== undefined && !viewport.hasPointerCapture(event.pointerId)) {
-          return;
-        }
+        if (!viewport || !tracking) return;
 
-        viewport.releasePointerCapture?.(event.pointerId);
+        tracking = false;
 
         const distanceX = event.clientX - pointerStartX;
         const distanceY = event.clientY - pointerStartY;
@@ -310,7 +309,8 @@ if (projectsSlideshow) {
         pointerStartX = event.clientX;
         pointerStartY = event.clientY;
         swipeMoved = false;
-        viewport.setPointerCapture(event.pointerId);
+        // No pointer capture: it retargets the click away from the card link.
+        tracking = true;
       });
 
       viewport?.addEventListener('pointerup', finishSwipe);
@@ -687,10 +687,12 @@ document.querySelectorAll('.related-projects-carousel').forEach((carousel) => {
     }, 5000);
   };
 
-  const finishSwipe = (event) => {
-    if (!viewport.hasPointerCapture(event.pointerId)) return;
+  let tracking = false;
 
-    viewport.releasePointerCapture?.(event.pointerId);
+  const finishSwipe = (event) => {
+    if (!tracking) return;
+
+    tracking = false;
 
     const distanceX = event.clientX - pointerStartX;
     const distanceY = event.clientY - pointerStartY;
@@ -714,7 +716,7 @@ document.querySelectorAll('.related-projects-carousel').forEach((carousel) => {
     pointerStartX = event.clientX;
     pointerStartY = event.clientY;
     swipeMoved = false;
-    viewport.setPointerCapture(event.pointerId);
+    tracking = true;
   });
 
   viewport.addEventListener('pointerup', finishSwipe);

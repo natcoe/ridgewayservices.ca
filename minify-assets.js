@@ -21,6 +21,7 @@ async function getAssetFiles(directory) {
 async function minifyAssets() {
   const assetFiles = await getAssetFiles(outputDirectory);
 
+
   for (const filePath of assetFiles) {
     const source = await fs.readFile(filePath, "utf8");
     let minified;
@@ -44,7 +45,11 @@ async function minifyAssets() {
   }
 }
 
-minifyAssets().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+module.exports = minifyAssets;
+
+if (require.main === module) {
+  minifyAssets().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
